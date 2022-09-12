@@ -1,13 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:my_quiz/pages/homie.dart';
-import 'package:my_quiz/pages/questionPage.dart';
-import 'package:my_quiz/pages/quiz_intro.dart';
-import 'package:my_quiz/providers/profile_pro.dart';
-import 'package:my_quiz/widgets/sideNavBar.dart';
-import 'package:provider/provider.dart';
+import 'dart:convert';
 
-import '../providers/questions_pro.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
+import 'package:my_quiz/pages/quiz_intro.dart';
+import 'package:my_quiz/pages/extras/sideNavBar.dart';
+import 'package:provider/provider.dart';
+import 'package:http/http.dart' as http;
 import '../providers/quizData_pro.dart';
 
 class Home extends StatefulWidget {
@@ -20,12 +18,36 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   var isInit = true;
   var isLoading = false;
+  var link = 'https://the-trivia-api.com/api/questions';
+  // getQuiz() async {
+  //   var response = await http.get(Uri.parse(link));
+  //   if (response.statusCode == 200) {
+  //     var quizData = jsonDecode(response.body.toString());
+  //     print(quizData);
+  //   } else {
+  //     print('Error ');
+  //   }
+  // }
 
   // @override
   // void initState() {
   //   super.initState();
-  //   Provider.of<QuizProvider>(context).getUserDetails();
-  //   Provider.of<QuizProvider>(context).getQuiz();
+  //   print('Jai ho');
+  //   getQuiz();
+  // }
+  
+
+  // List trail = [];
+  // Future fetchData() async {
+  //   await FirebaseFirestore.instance
+  //       .collection("quizzes")
+  //       .doc("NEET")
+  //       .collection("questions")
+  //       .add({"quiz": "newlyAdded"}).then((value) {
+  //     trail.add(value);
+  //   });
+  //   print(trail);
+  //   return trail;
   // }
 
   @override
@@ -49,6 +71,14 @@ class _HomeState extends State<Home> {
     isInit = false;
     super.didChangeDependencies();
   }
+
+  List categories = [
+    'Film & TV',
+    'General Knowledge',
+    'History & Geography',
+    'Science',
+    'Sports'
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -152,16 +182,22 @@ class _HomeState extends State<Home> {
                                   childAspectRatio: 1 / 1,
                                   //crossAxisSpacing: 10,
                                 ),
-                                itemCount: 6,
+                                itemCount: categories.length,
                                 scrollDirection: Axis.horizontal,
                                 itemBuilder: (BuildContext ctx, index) {
-                                  return Container(
-                                    margin: EdgeInsets.all(5),
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                        color: Colors.amber,
-                                        borderRadius:
-                                            BorderRadius.circular(20)),
+                                  return InkWell(
+                                    onTap: () {},
+                                    child: Container(
+                                      margin: EdgeInsets.all(5),
+                                      alignment: Alignment.center,
+                                      decoration: BoxDecoration(
+                                          color: Colors.amber,
+                                          borderRadius:
+                                              BorderRadius.circular(20)),
+                                      child: Center(
+                                        child: Text('${categories[index]}'),
+                                      ),
+                                    ),
                                   );
                                 }),
                           ),

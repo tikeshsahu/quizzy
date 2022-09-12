@@ -13,16 +13,16 @@ class QuizIntro extends StatefulWidget {
 }
 
 class _QuizIntroState extends State<QuizIntro> {
-  @override
-  void setState(VoidCallback fn) {
-    super.setState(fn);
-    Provider.of<QuizDataProvider>(
-      context,
-    ).getQuiz();
-    Provider.of<ProfileProvider>(
-      context,
-    ).getUserDetails();
-  }
+  // @override
+  // void setState(VoidCallback fn) {
+  //   super.setState(fn);
+  //   Provider.of<QuizDataProvider>(
+  //     context,
+  //   ).getQuiz();
+  //   // Provider.of<ProfileProvider>(
+  //   //   context,
+  //   // ).getUserDetails();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,10 @@ class _QuizIntroState extends State<QuizIntro> {
           style: TextStyle(fontSize: 20),
         ),
         onPressed: () async {
-          await Navigator.push(context, MaterialPageRoute(builder: (context) => Question(quizzName: Provider.of<QuizDataProvider>(context).quizName,)));
+          await Navigator.push(context, MaterialPageRoute(builder: (context) 
+          => Question(
+            quizzName: Provider.of<QuizDataProvider>(context).quizName,
+          )));
         },
       ),
       body: SafeArea(

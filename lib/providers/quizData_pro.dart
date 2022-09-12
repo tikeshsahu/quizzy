@@ -21,6 +21,6 @@ class QuizDataProvider with ChangeNotifier {
       quizID = quizzes[0]["quiz_id"];
     });
     notifyListeners();
-    //print(quizDuration);
+    //print(quizzes);
   }
 }

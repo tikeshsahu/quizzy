@@ -30,8 +30,7 @@ Future<User?> signWithGoogle() async {
       user.email.toString(), user.photoURL.toString(), user.uid);
   await LocalDB.saveUserID(user.uid);
   await LocalDB.saveName(user.displayName.toString());
-  await LocalDB.saveUrl(user.photoURL.toString());
-
+  await LocalDB.saveUrl(user.photoURL.toString());   
 }
 
 Future<String> signOut() async {

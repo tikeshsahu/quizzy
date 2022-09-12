@@ -12,6 +12,7 @@ class HomeFire {
               //print(myQuiz["Quizid"]);
 
               all_quiz.add(myQuiz);
+              //print(myQuiz);
             }));
     return all_quiz;
   }

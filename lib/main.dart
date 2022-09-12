@@ -1,11 +1,15 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:my_quiz/pages/extras/resultScreen.dart';
+import 'package:my_quiz/pages/extras/settings.dart';
 import 'package:my_quiz/pages/home.dart';
 import 'package:my_quiz/pages/homie.dart';
+import 'package:my_quiz/pages/leaderBoard.dart';
 import 'package:my_quiz/pages/login.dart';
 import 'package:my_quiz/pages/profile.dart';
 import 'package:my_quiz/pages/questionPage.dart';
+import 'package:my_quiz/pages/signIn.dart';
 import 'package:my_quiz/providers/profile_pro.dart';
 import 'package:my_quiz/providers/quizData_pro.dart';
 import 'package:provider/provider.dart';
@@ -54,8 +58,9 @@ class _MyAppState extends State<MyApp> {
       //create: (context) => ProfileProvider(),
       child: MaterialApp(
           title: 'Quizzy', debugShowCheckedModeBanner: false, 
-          home: Homie()
-          //loggedIn ? Homie() : const LoginPage(),
+          home: 
+          // Homie()
+          loggedIn ? Homie() : const LoginPage(),
           ),
     );
   }

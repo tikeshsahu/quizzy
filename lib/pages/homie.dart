@@ -1,6 +1,7 @@
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:my_quiz/pages/home.dart';
+import 'package:my_quiz/pages/leaderBoard.dart';
 import 'package:my_quiz/pages/profile.dart';
 
 
@@ -26,7 +27,7 @@ class _HomieState extends State<Homie> {
       const Home(),
       const Profile(),
 //const QuizScreen(),
-      const Profile(),
+      const Leaderboard(),
       const Profile(),
     ];
     return Scaffold(
@@ -42,8 +43,8 @@ class _HomieState extends State<Homie> {
           tabs: const [
             GButton(text: 'Home', icon: Icons.home),
             GButton(text: 'Explore', icon: Icons.apps),
-            GButton(text: 'Leaderboard', icon: Icons.chat_bubble),
-            GButton(text: 'Profile', icon: Icons.settings),
+            GButton(text: 'Leaderboard', icon: Icons.work_outline),
+            GButton(text: 'Profile', icon: Icons.person),
           ],
         ),
         endDrawerEnableOpenDragGesture: true,
